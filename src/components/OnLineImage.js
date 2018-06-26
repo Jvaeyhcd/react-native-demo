@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {TouchableOpacity, Image, ImageBackground} from 'react-native';
+import { CachedImage } from 'react-native-img-cache';
 
 export default class OnLineImage extends React.Component {
   render() {
@@ -15,20 +16,20 @@ export default class OnLineImage extends React.Component {
         <ImageBackground
           style={this.props.style}
           source={this.props.defaultSource}>
-          <Image
+          <CachedImage
             style={this.props.style}
             source={this.props.source}>
             {this.props.children}
-          </Image>
+          </CachedImage>
         </ImageBackground>
       )
     }else {
       return (
-        <ImageBackground
+        <CachedImage
           style={this.props.style}
           source={this.props.source}>
           {this.props.children}
-        </ImageBackground>
+        </CachedImage>
       )
     }
   }

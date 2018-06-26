@@ -15,6 +15,8 @@ import Carousel from 'react-native-snap-carousel';
 import Layout from '../constants/Layout';
 import Colors from '../constants/Colors';
 import InspectionListItem from '../components/InspectionListItem';
+import NewsListItem from '../components/NewsListItem';
+import OnLineImage from '../components/OnLineImage';
 
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
@@ -36,15 +38,15 @@ export default class HomeScreen extends React.Component {
       videos: [
         {
           id: "WpIAc9by5iU",
-          thumbnail: "https://img.youtube.com/vi/D9ioyEvdggk/hqdefault.jpg",
+          thumbnail: "https://images.unsplash.com/photo-1529926706528-db9e5010cd3e?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=15a2c24190c6c20f56d6699e57e1b422&auto=format&fit=crop&w=2241&q=80",
           title: "Led Zeppelin - Stairway To Heaven"
         }, {
           id: "sNPnbI1arSE",
-          thumbnail: "https://img.youtube.com/vi/sNPnbI1arSE/hqdefault.jpg",
+          thumbnail: "https://images.unsplash.com/photo-1529925994111-478ddf3b9e9a?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=a5060fabb7d69df0486db18fa2c44a69&auto=format&fit=crop&w=2241&q=80",
           title: "Eminem - My Name Is"
         }, {
           id: "VOgFZfRVaww",
-          thumbnail: "https://img.youtube.com/vi/VOgFZfRVaww/hqdefault.jpg",
+          thumbnail: "https://images.unsplash.com/photo-1529909373889-f1a832e7d513?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=02b433d34ccea8c78eb0bf0a77b6d8ab&auto=format&fit=crop&w=2255&q=80",
           title: ""
         }
       ]
@@ -67,7 +69,10 @@ export default class HomeScreen extends React.Component {
               this._carousel.snapToItem(index);
             }}
           >
-          <CurrentVideoImage source={{ uri: item.thumbnail }} />
+          <OnLineImage 
+            style={styles.currentAdsImage} 
+            defaultSource={require('../assets/images/pic_bg3.png')} 
+            source={{ uri: item.thumbnail }} />
         </CurrentAdTO>
         {/* <VideoTitleText>{item.title}</VideoTitleText> */}
       </ThumbnailBackgroundView>
@@ -131,31 +136,41 @@ export default class HomeScreen extends React.Component {
               <View style={{width: 16, height: 20, backgroundColor: Colors.divisionLineColor}}></View>
             </View>
           </View>
-
+          <View style={styles.headerContainer}>
+            <Text style={styles.headerContainerTitle}>巡检河道</Text>
+            <TouchableOpacity onPress={this._handleSeeMore('')} style={{flexDirection: 'row', alignItems: 'center'}}>
+              <Text style={{color: '#7F8085', textAlign: 'right', fontSize: 12}}>全部</Text>
+              <Image 
+                style={{width: 10, height: 10}}
+                source={require('../assets/images/home_ico_quanb.png')}></Image>
+            </TouchableOpacity>
+          </View>
           <InspectionListItem
-            defaultSource={require('../assets/images/home_ico_card.png')}
-            source={{uri: 'https://img.youtube.com/vi/D9ioyEvdggk/hqdefault.jpg'}}>
+            defaultSource={require('../assets/images/pic_bg_default.png')}
+            source={{uri: 'https://avatars3.githubusercontent.com/u/6993775?s=460&v=4 '}}>
             
           </InspectionListItem>
 
-          <View style={styles.getStartedContainer}>
-
-            <Text style={styles.getStartedText}>Get started by opening</Text>
-
-            <View style={[styles.codeHighlightContainer, styles.homeScreenFilename]}>
-              <MonoText style={styles.codeHighlightText}>screens/HomeScreen.js</MonoText>
-            </View>
-
-            <Text style={styles.getStartedText}>
-              Change this text and your app will automatically reload.
-            </Text>
-          </View>
-
-          <View style={styles.helpContainer}>
-            <TouchableOpacity onPress={this._handleHelpPress} style={styles.helpLink}>
-              <Text style={styles.helpLinkText}>Help, it didn’t automatically reload!</Text>
+          <InspectionListItem
+            defaultSource={require('../assets/images/pic_bg_default.png')}
+            source={{uri: 'https://images.unsplash.com/photo-1529931736005-85047bb51b72?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=285dbc8ad37850d36fb267f24a2bb528&auto=format&fit=crop&w=2250&q=80'}}>
+            
+          </InspectionListItem>
+          <View style={{height: 16, width: '100%', backgroundColor: Colors.divisionLineColor}}></View>
+          <View style={styles.headerContainer}>
+            <Text style={styles.headerContainerTitle}>新闻资讯</Text>
+            <TouchableOpacity onPress={this._handleSeeMore('')} style={{flexDirection: 'row', alignItems: 'center'}}>
+              <Text style={{color: '#7F8085', textAlign: 'right', fontSize: 12}}>更多</Text>
+              <Image 
+                style={{width: 10, height: 10}}
+                source={require('../assets/images/home_ico_quanb.png')}></Image>
             </TouchableOpacity>
           </View>
+          <NewsListItem
+            defaultSource={require('../assets/images/pic_bg_default.png')}
+            source={{uri: 'https://images.unsplash.com/photo-1529789864526-f7067145c1b7?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=122d73dc8e0cd54c2327699a237aa12a&auto=format&fit=crop&w=2250&q=80'}}>
+
+          </NewsListItem>
         </ScrollView>
       </View>
     );
@@ -171,6 +186,10 @@ export default class HomeScreen extends React.Component {
 
   _handleWorkItemPress = (tag) => {
     console.log(tag)
+  };
+
+  _handleSeeMore = (tag) => {
+
   };
 }
 
@@ -196,6 +215,7 @@ const ThumbnailBackgroundView = styled.View`
 `;
 
 const CurrentAdTO = styled.TouchableOpacity`
+  top: 25;
 `
 const CarouselBackgroundView = styled.View`
   background-color: white;
@@ -207,6 +227,15 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#ffffff',
+  },
+  currentAdsImage: {
+    width: 300,
+    height: 150,
+    borderRadius: 4,
+    // shadowRadius: 5,
+    // shadowOffset:{  width: 10,  height: 10, },
+    // shadowColor: 'black',
+    // shadowOpacity: 1.0,
   },
   workBoardContainer: {
     flexDirection: 'row', 
@@ -237,12 +266,22 @@ const styles = StyleSheet.create({
     color: '#666666',
     marginTop: 8,
   },
-  developmentModeText: {
-    marginBottom: 20,
-    color: 'rgba(0,0,0,0.4)',
-    fontSize: 14,
-    lineHeight: 19,
-    textAlign: 'center',
+  headerContainer: {
+    flexDirection: 'row', 
+    backgroundColor: '#ffffff', 
+    paddingLeft: 16, 
+    paddingRight: 16,
+    borderBottomColor: Colors.divisionLineColor,
+    borderBottomWidth: 1,
+    paddingTop: 10
+  },
+  headerContainerTitle: {
+    height: 40, 
+    lineHeight: 40, 
+    fontSize: 16, 
+    color: '#3E3E3E', 
+    flex: 1, 
+    fontWeight: 'bold',
   },
   contentContainer: {
     paddingTop: 0,
@@ -252,13 +291,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginTop: 0,
     marginBottom: 0,
-  },
-  welcomeImage: {
-    width: 100,
-    height: 80,
-    resizeMode: 'contain',
-    marginTop: 3,
-    marginLeft: -10,
   },
   tagText: {
     flex: 1, 
@@ -281,20 +313,6 @@ const styles = StyleSheet.create({
   },
   homeScreenFilename: {
     marginVertical: 7,
-  },
-  codeHighlightText: {
-    color: 'rgba(96,100,109, 0.8)',
-  },
-  codeHighlightContainer: {
-    backgroundColor: 'rgba(0,0,0,0.05)',
-    borderRadius: 3,
-    paddingHorizontal: 4,
-  },
-  getStartedText: {
-    fontSize: 17,
-    color: 'rgba(96,100,109, 1)',
-    lineHeight: 24,
-    textAlign: 'center',
   },
   tabBarInfoContainer: {
     position: 'absolute',
