@@ -6,10 +6,42 @@ import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
 import MessageScreen from '../screens/MessageScreen';
 import MineScreen from '../screens/MineScreen';
+import TaskListScreen from '../screens/TaskListScreen';
+import TaskDetailScreen from '../screens/TaskDetailScreen';
+import ComplaintDetailScreen from '../screens/ComplaintDetailScreen';
+import ComplaintListScreen from '../screens/ComplaintListScreen';
+import EvaluateScreen from '../screens/EvaluateScreen';
+import EventListScreen from '../screens/EventListScreen';
+import EventDetailScreen from '../screens/EventDetailScreen';
+import InspectionListScreen from '../screens/InspectionListScreen';
+import NewsListScreen from '../screens/NewsListScreen';
+import RiverHeadLogScreen from '../screens/RiverHeadLogScreen';
+import RiverPolicyScreen from '../screens/RiverPolicyScreen';
+import XJManageScreen from '../screens/XJManageScreen';
 
-const HomeStack = createStackNavigator({
-  Home: HomeScreen,
-});
+const HomeStack = createStackNavigator(
+  {
+    Home: HomeScreen,
+    TaskList: TaskListScreen,
+    TaskDetail: TaskDetailScreen,
+    ComplaintDetail: ComplaintDetailScreen,
+    ComplaintList: ComplaintListScreen,
+    Evaluate: EvaluateScreen,
+    EventList: EventListScreen,
+    EventDetail: EventDetailScreen,
+    InspectionList: InspectionListScreen,
+    NewsList: NewsListScreen,
+    RiverHeadLog: RiverHeadLogScreen,
+    RiverPolicy: RiverPolicyScreen,
+    XJManage: XJManageScreen,
+  }, {
+    mode: 'card',
+    initialRouteName: 'Home',
+    navigationOptions: {
+      gesturesEnabled: true,
+    },
+  }
+);
 
 HomeStack.navigationOptions = {
   tabBarLabel: '首页',

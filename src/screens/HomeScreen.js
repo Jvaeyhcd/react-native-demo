@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+
 // import { SafeAreaView } from 'react-navigation';
 import { MonoText } from '../components/MonoText';
 import styled from "styled-components/native";
@@ -20,7 +21,7 @@ import OnLineImage from '../components/OnLineImage';
 
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
-    title: '首页'
+    title: '首页',
   };
 
   constructor (props) {
@@ -101,7 +102,7 @@ export default class HomeScreen extends React.Component {
           <View style={styles.workBoardContainer}>
             {
               workItemList.map((l, i) => (
-                <TouchableOpacity onPress={this._handleWorkItemPress('tag')} style={styles.workItem}>
+                <TouchableOpacity key={i} onPress={() => this._handleWorkItemPress(l.screenName)} style={styles.workItem}>
                   <Image
                     style={styles.workItemIcon}
                     source={l.iconImageSource}
@@ -138,7 +139,7 @@ export default class HomeScreen extends React.Component {
           </View>
           <View style={styles.headerContainer}>
             <Text style={styles.headerContainerTitle}>巡检河道</Text>
-            <TouchableOpacity onPress={this._handleSeeMore('')} style={{flexDirection: 'row', alignItems: 'center'}}>
+            <TouchableOpacity onPress={() => this._handleSeeMore('InspectionList')} style={{flexDirection: 'row', alignItems: 'center'}}>
               <Text style={{color: '#7F8085', textAlign: 'right', fontSize: 12}}>全部</Text>
               <Image 
                 style={{width: 10, height: 10}}
@@ -159,7 +160,7 @@ export default class HomeScreen extends React.Component {
           <View style={{height: 16, width: '100%', backgroundColor: Colors.divisionLineColor}}></View>
           <View style={styles.headerContainer}>
             <Text style={styles.headerContainerTitle}>新闻资讯</Text>
-            <TouchableOpacity onPress={this._handleSeeMore('')} style={{flexDirection: 'row', alignItems: 'center'}}>
+            <TouchableOpacity onPress={() => this._handleSeeMore('NewsList')} style={{flexDirection: 'row', alignItems: 'center'}}>
               <Text style={{color: '#7F8085', textAlign: 'right', fontSize: 12}}>更多</Text>
               <Image 
                 style={{width: 10, height: 10}}
@@ -185,11 +186,11 @@ export default class HomeScreen extends React.Component {
   };
 
   _handleWorkItemPress = (tag) => {
-    console.log(tag)
+    this.props.navigation.navigate(tag);
   };
 
   _handleSeeMore = (tag) => {
-
+    this.props.navigation.navigate(tag);
   };
 }
 
@@ -359,12 +360,12 @@ const workItemList = [
   {
     title: '任务管理',
     iconImageSource: require('../assets/images/home_ico_rwgl.png'),
-    screenName: ''
+    screenName: 'TaskList'
   },
   {
     title: '事件处理',
     iconImageSource: require('../assets/images/home_ico_sjcl.png'),
-    screenName: ''
+    screenName: 'EventList'
   },
   {
     title: '一河一档',
@@ -374,26 +375,26 @@ const workItemList = [
   {
     title: '一河一策',
     iconImageSource: require('../assets/images/home_ico_yhyc.png'),
-    screenName: ''
+    screenName: 'RiverPolicy'
   },
   {
     title: '巡检管理',
     iconImageSource: require('../assets/images/home_ico_xjgl.png'),
-    screenName: ''
+    screenName: 'XJManage'
   },
   {
     title: '河长日志',
     iconImageSource: require('../assets/images/home_ico_hzrj.png'),
-    screenName: ''
+    screenName: 'RiverHeadLog'
   },
   {
     title: '群众投诉',
     iconImageSource: require('../assets/images/home_ico_qzts.png'),
-    screenName: ''
+    screenName: 'ComplaintList'
   },
   {
     title: '考核评价',
     iconImageSource: require('../assets/images/home_ico_khpj.png'),
-    screenName: ''
+    screenName: 'Evaluate'
   }
 ]
