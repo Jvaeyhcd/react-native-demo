@@ -18,6 +18,10 @@ import NewsListScreen from '../screens/NewsListScreen';
 import RiverHeadLogScreen from '../screens/RiverHeadLogScreen';
 import RiverPolicyScreen from '../screens/RiverPolicyScreen';
 import XJManageScreen from '../screens/XJManageScreen';
+import RiverDetailScreen from '../screens/RiverDetailScreen';
+import PatrolListScreen from '../screens/PatrolListScreen';
+import PatrolDetailScreen from '../screens/PatrolDetailScreen';
+import PositionScreen from '../screens/PositionScreen';
 
 const HomeStack = createStackNavigator(
   {
@@ -34,6 +38,10 @@ const HomeStack = createStackNavigator(
     RiverHeadLog: RiverHeadLogScreen,
     RiverPolicy: RiverPolicyScreen,
     XJManage: XJManageScreen,
+    RiverDetail: RiverDetailScreen,
+    PatrolList: PatrolListScreen,
+    PatrolDetail: PatrolDetailScreen,
+    Position: PositionScreen
   }, {
     mode: 'card',
     initialRouteName: 'Home',

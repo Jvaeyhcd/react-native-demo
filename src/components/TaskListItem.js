@@ -24,7 +24,7 @@ export default class TaskListItem extends React.Component {
           <View style={{flexDirection: 'row', }}>
             <Text style={styles.taskTitle}>任务名称</Text>
             <Text style={styles.taskContent}>江安河道情况摸排调查</Text>
-            <TouchableOpacity style={{width: 52, borderRadius: 2, backgroundColor: '#3A9CEA', justifyContent: 'center',alignItems: 'center', }}>
+            <TouchableOpacity style={{width: 52, height: 26, borderRadius: 2, backgroundColor: '#3A9CEA', justifyContent: 'center',alignItems: 'center', }}>
               <Text style={{color: '#ffffff', fontSize: 14,}}>接受</Text>
             </TouchableOpacity>
           </View>
@@ -56,16 +56,18 @@ const styles = StyleSheet.create({
   },
   taskTitle: {
     width: 70,
-    paddingTop: 6,
-    paddingBottom: 6,
+    paddingTop: 4,
+    paddingBottom: 4,
     fontSize: 14,
+    lineHeight: 20,
     color: '#777777',
   },
   taskContent: {
     flex: 1,
-    paddingTop: 6,
-    paddingBottom: 6,
+    paddingTop: 4,
+    paddingBottom: 4,
     fontSize: 14,
+    lineHeight: 20,
     color: '#3E3E3E',
   },
   acceptBtn: {

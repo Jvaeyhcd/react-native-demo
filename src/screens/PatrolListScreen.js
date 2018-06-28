@@ -7,18 +7,20 @@ import {
   TouchableOpacity 
 } from 'react-native';
 import { Button, Icon } from '@shoutem/ui';
-import RiverListItem from '../components/RiverListItem';
-export default class RiverPolicyScreen extends React.Component {
+import PatrolListItem from '../components/PatrolListItem';
+import Colors from '../constants/Colors';
+
+export default class PatrolListScreen extends React.Component {
   static navigationOptions = ({ navigation }) => {
     return {
-      title: '一河一策',
+      title: '巡检记录',
       headerLeft: (
         <View>
           <Button styleName="clear" onPress={navigation.getParam('goBack')}>
             <Icon name="back" />
           </Button>
         </View>
-      )
+      ),
     };
   };
 
@@ -65,12 +67,10 @@ export default class RiverPolicyScreen extends React.Component {
         <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
           {
             this.state.news.map((l, i) => (
-              <RiverListItem
-                onPress={() => {this.props.navigation.navigate('RiverDetail')}}
-                defaultSource={require('../assets/images/pic_bg_default.png')}
-                source={{uri: l.thumbnail}}>
+              <PatrolListItem
+                onPress={() => {this.props.navigation.navigate('PatrolDetail')}}>
   
-              </RiverListItem>
+              </PatrolListItem>
             ))
           }
         </ScrollView>
@@ -82,10 +82,10 @@ export default class RiverPolicyScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#ffffff',
+    backgroundColor: Colors.divisionLineColor,
   },
   contentContainer: {
     paddingTop: 0,
-    backgroundColor: '#ffffff',
+    backgroundColor: Colors.divisionLineColor,
   },
 })

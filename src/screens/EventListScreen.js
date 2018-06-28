@@ -47,13 +47,11 @@ export default class EventListScreen extends React.Component {
         inactiveColor={"#777777"}
         />)}>
         <ScrollView tabLabel='未处理' style={styles.container} contentContainerStyle={styles.contentContainer}>
-          <EventListItem></EventListItem>
-          <EventListItem></EventListItem>
-          <EventListItem></EventListItem>
-          <EventListItem></EventListItem>
+          <EventListItem onPress={() => this.props.navigation.navigate('EventDetail')}></EventListItem>
+          <EventListItem onPress={() => this.props.navigation.navigate('EventDetail')}></EventListItem>
         </ScrollView>
         <ScrollView tabLabel='已处理' style={styles.container} contentContainerStyle={styles.contentContainer}>
-          <EventListItem></EventListItem>
+          <EventListItem onPress={() => this.props.navigation.navigate('EventDetail')}></EventListItem>
         </ScrollView>
       </ScrollableTabView>
     )

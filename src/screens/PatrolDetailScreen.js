@@ -11,10 +11,10 @@ import PatrolListItem from '../components/PatrolListItem';
 import PositionListItem from '../components/PositionListItem';
 import Colors from '../constants/Colors';
 
-export default class XJManageScreen extends React.Component {
+export default class PatrolDetailScreen extends React.Component {
   static navigationOptions = ({ navigation }) => {
     return {
-      title: '巡检管理',
+      title: '巡检详情',
       headerLeft: (
         <View>
           <Button styleName="clear" onPress={navigation.getParam('goBack')}>
@@ -22,27 +22,15 @@ export default class XJManageScreen extends React.Component {
           </Button>
         </View>
       ),
-      headerRight: (
-        <View>
-          <Button styleName="clear" onPress={navigation.getParam('goToPatrolList')}>
-            <Text style={{color: '#333333', fontSize: 14, marginRight: 8}}>巡检记录</Text>
-          </Button>
-        </View>
-      )
     };
   };
 
   componentDidMount() {
     this.props.navigation.setParams({ goBack: this._goBack });
-    this.props.navigation.setParams({ goToPatrolList: this._goToPatrolList })
   }
 
   _goBack = () => {
     this.props.navigation.goBack();
-  }
-
-  _goToPatrolList = () => {
-    this.props.navigation.navigate('PatrolList')
   }
 
   render () {
