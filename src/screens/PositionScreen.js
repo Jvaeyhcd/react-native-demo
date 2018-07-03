@@ -92,12 +92,12 @@ const styles = StyleSheet.create({
   question: {
     flex: 1, 
     color: '#333333', 
-    fontSize: 14
+    fontSize: 15
   },
   answer: {
     width: 20, 
     textAlign: 'right', 
     color: '#333333', 
-    fontSize: 14
+    fontSize: 15
   }
 })

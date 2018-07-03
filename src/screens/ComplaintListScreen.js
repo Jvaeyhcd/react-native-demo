@@ -1,11 +1,17 @@
 import React, { Component } from 'react'
 import { 
   View, 
+  ScrollView, 
   Text, 
   StyleSheet,
   TouchableOpacity 
 } from 'react-native';
 import { Button, Icon } from '@shoutem/ui';
+import Layout from '../constants/Layout';
+import Colors from '../constants/Colors';
+import ScrollableTabView , { DefaultTabBar } from 'react-native-scrollable-tab-view';
+import CustomTabBar from '../components/CustomTabBar';
+import ComplaintListItem from '../components/ComplaintListItem';
 
 export default class ComplaintListScreen extends React.Component {
   static navigationOptions = ({ navigation }) => {
@@ -31,9 +37,23 @@ export default class ComplaintListScreen extends React.Component {
 
   render () {
     return (
-      <View>
-        <Text>群众投诉</Text>
-      </View>
+      <ScrollableTabView
+        style={{backgroundColor: Colors.divisionLineColor}}
+        renderTabBar={() => (<CustomTabBar
+        backgroundColor={'#ffffff'}
+        tabUnderlineDefaultWidth={40} // default containerWidth / (numberOfTabs * 4)
+        tabUnderlineScaleX={3} // default 3
+        activeColor={"#409ee7"}
+        inactiveColor={"#777777"}
+        />)}>
+        <ScrollView tabLabel='未处理' style={styles.container} contentContainerStyle={styles.contentContainer}>
+          <ComplaintListItem onPress={() => this.props.navigation.navigate('ComplaintDetail')}></ComplaintListItem>
+          <ComplaintListItem onPress={() => this.props.navigation.navigate('ComplaintDetail')}></ComplaintListItem>
+        </ScrollView>
+        <ScrollView tabLabel='已处理' style={styles.container} contentContainerStyle={styles.contentContainer}>
+          <ComplaintListItem onPress={() => this.props.navigation.navigate('ComplaintDetail')}></ComplaintListItem>
+        </ScrollView>
+      </ScrollableTabView>
     )
   }
 }
@@ -41,6 +61,10 @@ export default class ComplaintListScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#ffffff',
+    backgroundColor: Colors.divisionLineColor,
+  },
+  contentContainer: {
+    paddingTop: 0,
+    backgroundColor: Colors.divisionLineColor,
   },
 })

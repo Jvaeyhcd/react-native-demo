@@ -32,7 +32,7 @@ export default class EvaluateScreen extends React.Component {
   render () {
     return (
       <View>
-        <Text>考核评价</Text>
+        
       </View>
     )
   }
