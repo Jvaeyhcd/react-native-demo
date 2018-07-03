@@ -22,6 +22,13 @@ import RiverDetailScreen from '../screens/RiverDetailScreen';
 import PatrolListScreen from '../screens/PatrolListScreen';
 import PatrolDetailScreen from '../screens/PatrolDetailScreen';
 import PositionScreen from '../screens/PositionScreen';
+import SystemMessageScreen from '../screens/SystemMessageScreen';
+
+import TodoListScreen from '../screens/TodoListScreen';
+import TrackListScreen from '../screens/TrackListScreen';
+import LeaderApprovalListScreen from '../screens/LeaderApprovalListScreen';
+import MineApprovalListScreen from '../screens/MineApprovalListScreen';
+import SettingScreen from '../screens/SettingScreen';
 
 const HomeStack = createStackNavigator(
   {
@@ -41,7 +48,7 @@ const HomeStack = createStackNavigator(
     RiverDetail: RiverDetailScreen,
     PatrolList: PatrolListScreen,
     PatrolDetail: PatrolDetailScreen,
-    Position: PositionScreen
+    Position: PositionScreen,
   }, {
     mode: 'card',
     initialRouteName: 'Home',
@@ -63,9 +70,18 @@ HomeStack.navigationOptions = {
   ),
 };
 
-const LinksStack = createStackNavigator({
-  Links: MessageScreen,
-});
+const LinksStack = createStackNavigator(
+  {
+    Links: MessageScreen,
+    SystemMessage: SystemMessageScreen
+  }, {
+    mode: 'card',
+    initialRouteName: 'Links',
+    navigationOptions: {
+      gesturesEnabled: true,
+    },
+  }
+);
 
 LinksStack.navigationOptions = {
   tabBarLabel: '消息',
@@ -79,9 +95,23 @@ LinksStack.navigationOptions = {
   ),
 };
 
-const SettingsStack = createStackNavigator({
-  Settings: MineScreen,
-});
+const SettingsStack = createStackNavigator(
+  {
+    Mine: MineScreen,
+    TodoList: TodoListScreen,
+    TrackList: TrackListScreen,
+    LeaderApprovalList: LeaderApprovalListScreen,
+    MineApprovalList: MineApprovalListScreen,
+    EventDetail: EventDetailScreen,
+    Setting: SettingScreen,
+  }, {
+    mode: 'card',
+    initialRouteName: 'Mine',
+    navigationOptions: {
+      gesturesEnabled: true,
+    },
+  }
+);
 
 SettingsStack.navigationOptions = {
   tabBarLabel: '我的',

@@ -10,6 +10,8 @@ import {
 
 import { Button, Icon } from '@shoutem/ui';
 import Colors from '../constants/Colors';
+import CustomListItem from '../components/CustomListItem';
+import Layout from '../constants/Layout';
 
 export default class MineScreen extends React.Component {
   static navigationOptions = {
@@ -24,7 +26,7 @@ export default class MineScreen extends React.Component {
         <ScrollView contentContainerStyle={styles.contentContainer}>
           <View style={styles.userInfoContainer}>
             <View style={{flex: 4, backgroundColor:"#ffffff", flexDirection: 'column'}}>
-              <Text style={{fontSize: 20, color: '#333333', marginBottom: 8}}>黄成达</Text>
+              <Text style={{fontSize: 20, color: '#333333', marginBottom: 8}}>Salvador</Text>
               <View style={styles.addressContainer}>
                 <Image
                   style={styles.addressIcon}
@@ -67,27 +69,44 @@ export default class MineScreen extends React.Component {
           {
             list.map((l, i) => (
               l.map((ll, j) => (
-                <ListItem
-                  avatar={{source: require('../assets/images/mine_ico_dbsx.png')}}
-                  key={i}
+                // <ListItem
+                //   avatar={{source: require('../assets/images/mine_ico_dbsx.png')}}
+                //   key={i}
+                //   title={ll.name}
+                //   titleStyle={styles.listItemTitle}
+                //   containerStyle={j == 0 ? styles.listItemFirstContainer : styles.listItemContainer}
+                //   onPress={() => console.log("Works!")}
+                // />
+                <CustomListItem 
+                  iconSource={ll.iconName}
                   title={ll.name}
-                  titleStyle={styles.listItemTitle}
-                  containerStyle={j == 0 ? styles.listItemFirstContainer : styles.listItemContainer}
-                  onPress={() => console.log("Works!")}
-                />
+                  section={j}
+                  row={i}
+                  isLast={j == l.length - 1}
+                  onPress={() => {this.props.navigation.navigate(ll.screen)}}
+                  ></CustomListItem>
+                
               ))
             ))
-          }
+          }this._setHeader(0)
         </ScrollView>
       </View>
     )
+  }
+
+  _setHeader(index) {
+    if (index == 0) {
+      return (
+        <View style={{height: 16, width:Layout.window.width, backgroundColor: Colors.divisionLineColor}}></View>
+      )
+    }
   }
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: Colors.divisionLineColor
   },
   contentContainer: {
     paddingVertical: 0
@@ -98,6 +117,9 @@ const styles = StyleSheet.create({
     paddingBottom: 15,
     paddingLeft: 15,
     paddingRight: 15,
+    borderBottomWidth: 16,
+    backgroundColor: '#ffffff',
+    borderBottomColor: Colors.divisionLineColor
   },
   listItemContainer: {
     borderTopWidth: 0,
@@ -156,37 +178,37 @@ const list = [
   [
     {
       name: '跟踪事项',
-      avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg',
-      subtitle: 'Vice President'
+      iconName: require('../assets/images/mine_ico_gzsx.png'),
+      screen: 'TrackList'
     },
     {
       name: '待办事项',
-      avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
-      subtitle: 'Vice Chairman'
+      iconName: require('../assets/images/mine_ico_dbsx.png'),
+      screen: 'TodoList'
     },
     {
       name: '领导批示',
-      avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
-      subtitle: 'Vice Chairman'
-    },,
+      iconName: require('../assets/images/mine_ico_ldps.png'),
+      screen: 'LeaderApprovalList'
+    },
     {
       name: '我的批示',
-      avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
-      subtitle: 'Vice Chairman'
+      iconName: require('../assets/images/mine_ico_wdps.png'),
+      screen: 'MineApprovalList'
     },
   ],
   [
     {
       name: '会商',
-      avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg',
-      subtitle: 'Vice President'
+      iconName: require('../assets/images/mine_ico_hsxt.png'),
+      screen: 'Vice President'
     },
   ],
   [
     {
       name: '设置',
-      avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
-      subtitle: 'Vice Chairman'
+      iconName: require('../assets/images/mine_ico_set.png'),
+      screen: 'Setting'
     },
   ]
 ]
