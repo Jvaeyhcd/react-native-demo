@@ -1,4 +1,4 @@
-# RiverManager
+# react-native-demo
 
 ## How to use?
 
@@ -22,7 +22,7 @@ npm run run-ios            #在iOS上启动（保证npm run start是在运行�
 npm run run-android        #在Android上启动（保证npm run start是在运行中）
 ```
 
-### 使用到的第三方库
+## 使用到的第三方库
 
 * [UI toolkit](https://shoutem.github.io/docs/ui-toolkit/components/typography)：开源的React Native的UI库。
 * [react-native-elements](https://github.com/react-native-training/react-native-elements)：Cross Platform React Native UI Toolkit。
